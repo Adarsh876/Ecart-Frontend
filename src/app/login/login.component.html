@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center align-items-center w-100 mt-5">
+    <div class=" rounded shadow" style="width: 60rem; height: 500px; overflow: hidden;">
+        <div class="row d-flex">
+            <!-- left-section__login field -->
+            <div class="col-md-6 bg-light d-flex flex-column justify-content-center align-items-center" style="width: 50%;">
+                <div class="logo">
+                    <button class="btn btn-outline-danger" style="border-radius: 50%; width: 5rem; height: 5rem;">
+                        <i class="fa-solid fa-user fs-1"></i>
+                    </button>
+                </div>
+                <div class="text-danger text-center">
+                    <h3 class="fw-bold">Welcome User</h3>
+                </div>
+
+                <div class="input-field p-3 rounded bg-light shadow mt-5" style="width: 400px;">
+                    <form (ngSubmit)="login()" [formGroup]="loginForm">
+                        <input class="form-control mb-2" type="text" placeholder="Enter Email" formControlName="email" name="email">
+                        <span *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched" class="text-warning">Invalid email</span>
+                        <input class="form-control mb-2" type="text" placeholder="Enter Password" formControlName="password" name="pswd">
+                        <span *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched" class="text-warning">Invalid password</span>
+                        <input class="btn btn-outline-danger w-100 mb-2" value="Login" type="submit">
+                    </form>
+                </div>
+            </div>
+
+            <!-- right-section -->
+            <div class="right-section text-light d-flex justify-content-center align-items-center flex-column col-md-6 p-3" style="width: 50%; height: 500px;">
+                <div class="logo d-flex">
+                    <i class="fa-brands fa-slack me-2 fs-2"></i><h4 class="fw-bold">Daily-cart</h4>
+                </div>
+                <div>
+                    <h3>Don't Have an Account</h3>
+                </div>
+                <div class="mt-3 text-center p-2">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi non suscipit quidem autem recusandae corporis eveniet similique impedit incidunt nemo necessitatibus, sed amet consequuntur error accusamus tenetur.</p>
+                </div>
+                <div>
+                    <a routerLink="user/register"><button class="btn btn-outline-light">SIGN UP</button></a>
+                </div>
+            </div>
+            
+          </div>
+    </div>
+</div>

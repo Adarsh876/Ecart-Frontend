@@ -1,0 +1,18 @@
+<div>
+    <nav class="navbar bg-body-danger p-2">
+        <div class="container-fluid d-flex justify-content-between">
+          <a class="navbar-brand"><i class="fa-brands fa-slack fa-2x text-light"></i><span class="text-light ms-2"> Daily Cart</span></a>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2 search" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn border" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+          </form>
+          <div>
+           <a routerLink="/wishlist"> <button class="btn border me-3"><i class="fa-solid fa-heart"></i> Wishlist <span class="badge text-bg-secondary">{{wishlistCount}}</span></button></a>
+           <a routerLink="/cart"> <button class="btn border me-3"><i class="fa-solid fa-cart-shopping"></i> Cart <span class="badge text-bg-secondary">{{cartCount}}</span></button></a>
+            <a routerLink="/user/login"><button  *ngIf="!loginUserName"  class="btn border me-3"><i class="fa-solid fa-user"></i> Login</button></a>
+            <button (click)="logout()" *ngIf="loginUserName" class="btn border me-3"><i class="fa-solid fa-power-off"></i> {{loginUserName}} </button>
+
+          </div>
+        </div>
+      </nav>
+</div>

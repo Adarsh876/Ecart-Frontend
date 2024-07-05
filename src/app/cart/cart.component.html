@@ -1,0 +1,52 @@
+<app-header></app-header>
+<div class="d-flex flex-column">
+    <div *ngIf="(allProducts.length==0)" class="d-flex justify-content-center align-items-center flex-column">
+        <h1 style="color: rgb(244, 48, 117);">Your Cart is Empty</h1>
+        <img src="https://media2.giphy.com/media/fscIxPfKjPyShbwUS5/giphy.gif?cid=6c09b9521b4b7adc2ede5194a30481a1994f52968b0d1f9d&rid=giphy.gif&ct=s" alt="">
+    </div>
+    <div *ngIf="!(allProducts.length==0)">
+        <h1 class="d-flex justify-content-center align-items-center" style="color: rgb(244, 48, 117);">Your Cart Summary</h1>
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-9 mb-5">
+                    <table class="table shadow">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Product Name</th>
+                                <th>Image</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let product of allProducts; let i = index">
+                                <td>{{i+1}}</td>
+                                <td>{{product.title}}</td>
+                                <td><img height="100px" width="100px" [src]="product.image" alt=""></td>
+                                <td>
+                                    <div class="d-flex">
+                                        <button (click)="decrementItem(product._id)" type="button" class="btn">-</button>
+                                        <button type="button" class="btn">{{product.quantity}}</button>
+                                        <button (click)="incrementItem(product._id)" type="button" class="btn">+</button>
+                                    </div>
+                                </td>
+                                <td>{{product.price}}/-</td>
+                                <td><button (click)="removeItem(product._id)" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="d-flex justify-content-center gap-3">
+                        <button (click)="emptyCart()" class="btn btn-outline-danger">Empty Cart</button>
+                        <a routerLink="/"><button class="btn btn-outline-success">Add More</button></a>
+                    </div>
+                </div>
+                <div class="col-md-3 shadow rounded d-flex justify-content-center align-items-center flex-column" style="height: 150px;">
+                    <h3>Grand Total: {{total}}</h3>
+                    <a routerLink="/checkout"><button (click)="checkout()" class="btn btn-success">CheckOut</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
